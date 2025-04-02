@@ -15,6 +15,24 @@ function show(req, res) {
     }
 }
 
+function store(req, res) {
+    const newId = books.length > 0 ? (books[books.length - 1].id + 1) : 1;
+    const newBook = {
+        id: newId,
+        title: req.body.title,
+        author: req.body.author,
+        year: req.body.year,
+        available: req.body.available
+    };
+
+    books.push(newBook);
+
+    console.log(books);
+
+    res.status(201);
+    res.json(newBook);
+}
+
 function destroy(req, res) {
     const id = parseInt(req.params.id);
     const bookIndex = books.findIndex(book => book.id === id);
@@ -32,5 +50,5 @@ function destroy(req, res) {
 
 
 
-module.exports = { index, show, destroy}
+module.exports = { index, show, store, destroy}
 

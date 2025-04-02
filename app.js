@@ -5,7 +5,7 @@ const bookRouter = require("./routes/bookRoutes.js")
 const app = express()
 const port = 5500
 
-
+app.use(express.json())
 app.use("/books", bookRouter)
 
 

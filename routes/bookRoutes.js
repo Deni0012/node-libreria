@@ -9,9 +9,7 @@ router.get("/", booksController.index)
 router.get("/:id", booksController.show)
 
 // Store 
-router.post("/", function (req, res) {
-    res.send("Funzione Store")
-})
+router.post("/", booksController.store)
 
 // Update 
 router.put("/:id", function (req, res) {
