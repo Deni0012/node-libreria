@@ -15,9 +15,22 @@ function show(req, res) {
     }
 }
 
+function destroy(req, res) {
+    const id = parseInt(req.params.id);
+    const bookIndex = books.findIndex(book => book.id === id);
+
+    if (bookIndex >= 0) {
+        books.splice(bookIndex, 1);
+        console.log(books)
+        res.sendStatus(204)
+    } else {
+        res.status(404).json({ message: "Post non trovato" });
+    }
+}
 
 
 
 
-module.exports = { index, show }
+
+module.exports = { index, show, destroy}
 

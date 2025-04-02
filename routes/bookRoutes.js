@@ -24,8 +24,6 @@ router.patch("/:id", function (req, res) {
 })
 
 // Destroy 
-router.delete("/:id", function (req, res) {
-    res.send("Funzione Destroy")
-})
+router.delete("/:id", booksController.destroy)
 
 module.exports = router;
