@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const booksController = require("../controller/bookController")
 
 // Index
-router.get("/", function (req, res) {
-    res.send("Funzione Index")
-})
+router.get("/", booksController.index)
 
 // Show
 router.get("/:id", function (req, res) {
