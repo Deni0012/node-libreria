@@ -8,7 +8,7 @@ const app = express()
 const port = 5500
 
 
-
+//application assets
 app.use(express.json())
 app.use(logger)
 app.use(validateBook)

@@ -1,3 +1,4 @@
+//Creiamo un middleware per PUT e POST e verifichiamo su postman che funzioni.
 const validateBook = (req, res, next) => {
     if (req.method === 'POST' || req.method === 'PUT') {
 

@@ -97,6 +97,6 @@ function destroy(req, res) {
 
 
 
-
+//modulo di esportazione
 module.exports = { index, show, store, update, patch, destroy}
 
