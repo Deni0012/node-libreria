@@ -20,6 +20,8 @@ function index(req, res) {
 
     res.json(filterdBooks);
 }
+
+//
 function getAvailableBooks(req, res) {
     // Filtra i libri in base alla proprietà "available" 
     const availableBooks = books.filter(book => book.available === true);
@@ -120,5 +122,5 @@ function destroy(req, res) {
 
 
 //modulo di esportazione
-module.exports = { index, show, store, update, patch, destroy}
+module.exports = { index, show, store, update, patch, destroy, getAvailableBooks }
 
