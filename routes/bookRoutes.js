@@ -15,9 +15,7 @@ router.post("/", booksController.store)
 router.put("/:id", booksController.update)
 
 // Patch 
-router.patch("/:id", function (req, res) {
-    res.send("Funzione Patch")
-})
+router.patch("/:id", booksController.patch)
 
 // Destroy 
 router.delete("/:id", booksController.destroy)

@@ -1,9 +1,12 @@
 const books = require('../data/books.json')
 
+
+//index
 function index(req, res) {
     res.json(books);
 }
 
+//show
 function show(req, res) {
     const id = parseInt(req.params.id);
     const book = books.find(book => book.id === id);
@@ -15,6 +18,7 @@ function show(req, res) {
     }
 }
 
+//store
 function store(req, res) {
     const newId = books.length > 0 ? (books[books.length - 1].id + 1) : 1;
     const newBook = {
@@ -33,6 +37,7 @@ function store(req, res) {
     res.json(newBook);
 }
 
+//update
 function update(req, res) {
     const id = parseInt(req.params.id);
     const book = books.find(book => book.id === id);
@@ -51,6 +56,31 @@ function update(req, res) {
     }
 }
 
+
+//patch
+function patch(req, res) {
+    const id = parseInt(req.params.id);
+    const book = books.find(book => book.id === id);
+    if (book) {
+        if (req.body.title && req.body.title != book.title) {
+            book.title = req.body.title;
+        }
+        if (req.body.author && req.body.author != book.author) {
+            book.author = req.body.author;
+        }
+        if (req.body.year && req.body.year != book.year) {
+            book.year = req.body.year;
+        }
+        if (req.body.available && req.body.available !== book.available) {
+            book.available = req.body.available
+        }
+        res.status(202).json(book)
+    } else {
+        res.status(404).json({ message: "Libro non trovato" });
+    }
+}
+
+//destroy
 function destroy(req, res) {
     const id = parseInt(req.params.id);
     const bookIndex = books.findIndex(book => book.id === id);
@@ -68,5 +98,5 @@ function destroy(req, res) {
 
 
 
-module.exports = { index, show, store, update, destroy}
+module.exports = { index, show, store, update, patch, destroy}
 
