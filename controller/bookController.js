@@ -20,14 +20,13 @@ function index(req, res) {
 
     res.json(filterdBooks);
 }
-
-function getAvailableBooks(req, res) { 
+function getAvailableBooks(req, res) {
     // Filtra i libri in base alla proprietà "available" 
-    const availableBooks = books.filter(book => book.available === true); 
-     // Restituisce l'array dei libri disponibili in formato JSON
-     res.json(availableBooks); 
-    app.get('/books/available', getAvailableBooks);
-    }
+    const availableBooks = books.filter(book => book.available === true);
+    // Restituisce l'array dei libri disponibili in formato JSON
+    res.json(availableBooks);
+
+}
 
 //show
 function show(req, res) {

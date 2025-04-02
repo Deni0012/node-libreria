@@ -7,7 +7,9 @@ router.get("/", booksController.index)
 router.get("/books/available", function(req, res){
     const availableBooks = books.filter(book => book.available === true)
     res.json(availableBooks);
+    app.get('/books/available', getAvailableBooks);
 })
+
 // Show
 router.get("/:id", booksController.show)
 
