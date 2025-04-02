@@ -6,9 +6,7 @@ const booksController = require("../controller/bookController")
 router.get("/", booksController.index)
 
 // Show
-router.get("/:id", function (req, res) {
-    res.send("Funzione Show")
-})
+router.get("/:id", booksController.show)
 
 // Store 
 router.post("/", function (req, res) {
