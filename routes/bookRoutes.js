@@ -12,9 +12,7 @@ router.get("/:id", booksController.show)
 router.post("/", booksController.store)
 
 // Update 
-router.put("/:id", function (req, res) {
-    res.send("Funzione Update")
-})
+router.put("/:id", booksController.update)
 
 // Patch 
 router.patch("/:id", function (req, res) {

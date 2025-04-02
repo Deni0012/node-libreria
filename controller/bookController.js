@@ -11,7 +11,7 @@ function show(req, res) {
     if (book) {
         res.json(book);
     } else {
-        res.status(404).json({ message: "Post non trovato" });
+        res.status(404).json({ message: "Libro non trovato" });
     }
 }
 
@@ -33,6 +33,24 @@ function store(req, res) {
     res.json(newBook);
 }
 
+function update(req, res) {
+    const id = parseInt(req.params.id);
+    const book = books.find(book => book.id === id);
+    if (book) {
+        if (!req.body.title || !req.body.author || !req.body.year || !req.body.available) {
+            res.status(404).json({ message: "Dati Non validi" });
+        } else {
+            book.title = req.body.title;
+            book.author = req.body.author;
+            book.year = req.body.year;
+            book.available = req.body.available;
+            res.status(202).json(book)
+        }
+    } else {
+        res.status(404).json({ message: "Libro non trovato" });
+    }
+}
+
 function destroy(req, res) {
     const id = parseInt(req.params.id);
     const bookIndex = books.findIndex(book => book.id === id);
@@ -42,7 +60,7 @@ function destroy(req, res) {
         console.log(books)
         res.sendStatus(204)
     } else {
-        res.status(404).json({ message: "Post non trovato" });
+        res.status(404).json({ message: "Libro non trovato" });
     }
 }
 
@@ -50,5 +68,5 @@ function destroy(req, res) {
 
 
 
-module.exports = { index, show, store, destroy}
+module.exports = { index, show, store, update, destroy}
 
