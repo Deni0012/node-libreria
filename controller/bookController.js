@@ -3,7 +3,22 @@ const books = require('../data/books.json')
 
 //index
 function index(req, res) {
-    res.json(books);
+    let filterdBooks = books;
+
+    if (req.query.author) {
+        // Assumiamo che req.query.author sia una singola stringa
+        const queryAuthor = req.query.author.toLowerCase().replace(/\s/g, '+');
+
+        filterdBooks = books.filter(book => {
+            // Assumiamo che book.author sia una singola stringa
+            const bookAuthor = book.author.toLowerCase().replace(/\s/g, '+');
+
+            // Verifichiamo se l'autore richiesto è incluso nell'autore del libro
+            return bookAuthor.includes(queryAuthor) || queryAuthor.includes(bookAuthor);
+        });
+    }
+
+    res.json(filterdBooks);
 }
 
 //show
