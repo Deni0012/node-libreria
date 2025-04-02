@@ -26,6 +26,7 @@ function getAvailableBooks(req, res) {
     const availableBooks = books.filter(book => book.available === true); 
      // Restituisce l'array dei libri disponibili in formato JSON
      res.json(availableBooks); 
+    app.get('/books/available', getAvailableBooks);
     }
 
 //show
